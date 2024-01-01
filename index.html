@@ -5,13 +5,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Social NotNT/NotReal</title>
-  <script> document.addEventListener('DOMContentLoaded', function () {
-    // Event
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // if the user has a visit date cookie
+    const lastVisit = getCookie('lastVisit');
 
-    // Send a welcome message 
-    sendDiscordWebhookMessage(':)');
+    // Get current date
+    const currentDate = new Date().toISOString();
+
+    // Set a cookie with the current date if no previous visit date exists or if the last visit was more than 7 days ago
+    if (!lastVisit || (new Date(lastVisit).getTime() + 7 * 24 * 60 * 60 * 1000) < new Date().getTime()) {
+        setCookie('lastVisit', currentDate, 7); // Set cookie to expire in 7 days
+
+        // welcome message to the Discord webhook
+        sendDiscordWebhookMessage(':)');
+    }
 });
 
+function setCookie(name, value, days) {
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + days);
+    const cookieValue = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; expires=${expirationDate.toUTCString()}; path=/`;
+    document.cookie = cookieValue;
+}
+
+function getCookie(name) {
+    const cookieMatch = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return cookieMatch ? decodeURIComponent(cookieMatch[2]) : null;
+}
 
 function sendDiscordWebhookMessage(message) {
     // this is just a demo link, replace with your real discord webhook URL.
@@ -38,6 +59,7 @@ function sendDiscordWebhookMessage(message) {
         body: JSON.stringify(payload),
     });
 }
+
 </script>
   <style>
     body {
