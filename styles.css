@@ -18,6 +18,8 @@ h1 {
   background: linear-gradient(to left, blue, red, blue, red, blue);
   color: transparent; /* F1F1F1 */
   -webkit-background-clip: text;
+  text-shadow: 0 0 35px #e22400;
+  animation: anime 2s infinite alternate;
 }
 
 p {
@@ -181,6 +183,12 @@ body.loaded #loading-screen {
 
 .pulse-bubble-3 {
   animation: pulse .4s ease .4s infinite alternate;
+}
+
+@keyframes anime {
+  100%{
+    text-shadow: 0 0 35px #0056d6;
+  }
 }
 
 @keyframes pulse {
