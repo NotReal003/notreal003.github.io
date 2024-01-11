@@ -4,186 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Social NotNT/NotReal</title>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-    // if the user has a visit date cookie
-    const lastVisit = getCookie('lastVisit');
-
-    // Get current date
-    const currentDate = new Date().toISOString();
-
-    // Set a cookie with the current date if no previous visit date exists or if the last visit was more than 7 days ago
-    if (!lastVisit || (new Date(lastVisit).getTime() + 7 * 24 * 60 * 60 * 1000) < new Date().getTime()) {
-        setCookie('lastVisit', currentDate, 7); // Set cookie to expire in 7 days
-
-        // welcome message to the Discord webhook
-        sendDiscordWebhookMessage(':)');
-    }
-});
-
-function setCookie(name, value, days) {
-    const expirationDate = new Date();
-    expirationDate.setDate(expirationDate.getDate() + days);
-    const cookieValue = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; expires=${expirationDate.toUTCString()}; path=/`;
-    document.cookie = cookieValue;
-}
-
-function getCookie(name) {
-    const cookieMatch = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-    return cookieMatch ? decodeURIComponent(cookieMatch[2]) : null;
-}
-
-function sendDiscordWebhookMessage(message) {
-    // this is just a demo link, replace with your real discord webhook URL.
-    const webhookUrl = 'https://discord.com/api/webhooks/1190547537883574323/tKLcophXurC8v5MCJblcrMBAmdbQnzsZBn9ITqLs3WR_YgA8m1cLTvbHGso7twIRH3Z5';
-
-    // embed message
-    const payload = {
-        embeds: [
-            {
-                title: 'A user visited website',
-                description: message,
-                color: 0xFF851A, // orange Hex color code for a greenish color, you can customize this
-                timestamp: new Date().toISOString(),
-            },
-        ],
-    };
-    // Send to the Discord webhook
-    fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-    });
-}
-
-</script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      background: url('imgs/img13.JPG') center/cover no-repeat; /* #12121 background color */
-      color: #F1F1F1;
-    }
-
-    header {
-      text-align: center;
-      padding: 60px 10px;
-      background: url('imgs/IMG_0510.jpg') center/cover no-repeat; /* 1f1f1f background color */
-      color: #fff;
-    }
-
-    h1 {
-      font-size: 2em;
-      color: #F1F1F1;
-    }
-
-    p {
-      font-size: 1em;
-      margin-top: 10px;
-    }
-    ppp {
-      font-weight: bold;
-    }
-
-    nav {
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    nav a {
-      margin: 0 20px;
-      text-decoration: none;
-      color: #121212; /* link color */
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-
-    .cta-section {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 15px;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 15px 35px;
-      background: #121212; /* #121212 button color */
-      color: #F1F1F1;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 1.5em;
-      margin-top: 5.5px;
-      border: 2px solid #202020; /* White border */
-      transition: background-color 1s ease;
-    }
-    
-    .cta-button p {
-      font-size: 0.9em;
-      color: #F1F1F1;
-      font-weight: bold;
-    }
-    .cta-button pr {
-      font-size: 0.5em;
-      color: #FF851A;
-    }
-
-    .cta-button:hover {
-      background-color: #1c1c1c; /* on hover */
-    }
-
-    .bio-section {
-      padding: 30px 20px;
-      text-align: center;
-      background: url('imgs/IMG_0509.jpg') center/cover no-repeat; /* #121212 background color */
-      margin-top: 5px;
-    }
-    .data-section {
-      padding: 30px 20px;
-      text-align: center;
-      background: url('imgs/IMG_0511.jpg') center/cover no-repeat; /* background color */
-      margin-top: 20px;
-      color: #FF851A;
-    }
-    .data-section h2 {
-      color: #F1F1F1;
-    }
-    .bio-section pp {
-      color: #FF851A;
-      font-weight: bold;
-    }
-    .bio-section qq {
-      color: #FF851A;
-      font-weight: bold;
-    }
-    .data-section pp {
-      font-size: 0.75em;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px 0;
-      background-color: #333; /* footer background color */
-      color: #fff;
-      margin-top: 5px;
-    }
-    .bio-section bi {
-      color: #F1F1F1;
-      
-    }
-  </style>
+  <title>Social site NotNT/NotReal</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  
 </head>
 
 <body>
+  <div id="loading-screen">
+    <div class="pulse-container">
+      <div class="pulse-bubble pulse-bubble-1"></div>
+      <div class="pulse-bubble pulse-bubble-2"></div>
+      <div class="pulse-bubble pulse-bubble-3"></div>
+    </div>
+  </div>
 
   <header>
-    <h1>NotNT or NotReal</h1>
+    <h1>NotNT aka NotReal</h1>
     <ppp>Hello There, Thanks for visiting my social site. You can find here some links, like Guild Application, Github, and my Discord Server link, and info about data colletion.</ppp>
   </header>
 
