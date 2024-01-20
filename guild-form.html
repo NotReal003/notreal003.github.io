@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guild Application Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2E3748; /* 040720 orange background color */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 60px 10px;
+            background: #1f1f1f; /* 1f1f1f Blue header background color */
+            color: #fff;
+        }
+        .container {
+            background-color: #2E3748;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: box-shadow 0.3s ease; /* Adding transition for box-shadow */
+        }
+
+        h1 {
+            color: #F1F1F1; /* Dark red heading color */
+        }
+
+        form {
+            margin-top: 20px;
+            background-color: #2E3748; /* Background color for the form */
+            padding: 20px; /* Adding padding to the form */
+            border-radius: 8px; /* Adding border-radius to match the container */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adding a subtle box-shadow */
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #EEEFF1; /* Blue label color */
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #4A5568;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #2E3748;; /* Setting the background color to black */
+            color: #fff; /* Text color set to white for better visibility on black background */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Adding transition for border-color and box-shadow */
+        }
+
+        input:hover,
+        textarea:hover {
+            border-color: #3498db; /* Highlight border color on hover */
+        }
+
+        button {
+            width: 100%;
+            background-color: #FF8521; /* Dark red button color */
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Adding transition for background-color */
+        }
+
+        button:hover {
+            background-color: #c0392b; /* Slightly darker red on hover */
+        }
+        .contact-us {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact-us p {
+            color: #fff;
+        }
+
+        .contact-us a {
+            color: #FF8521;
+            text-decoration: ;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-screen">
+        <div id="loading-spinner"></div>
+    </div>
+
+  <div class="header"style="margin-top: 20px; text-align: center;"">
+        <h1>Guild Application</h1>
+    </header>
+
+        <form id="guildForm">
+            <label for="ign">In-game username:</label>
+            <input type="text" id="ign" name="ign" required><br>
+
+            <label for="discordId">Your discord ID/Username:</label>
+            <input type="text" id="discordId" name="discordId" pattern="\d+" title="Please enter numbers only" required><br>
+
+            <label for="reason">Tell us a bit about you:</label>
+            <textarea id="reason" name="reason" rows="4" required></textarea><br>
+
+            <label for="wins">How many weekly wins can you get:</label>
+            <input type="text" id="wins" name="wins" pattern="\d+" title="Please enter numbers only" required><br>
+
+            <button type="button" onclick="submitForm()">Submit Application</button>
+        </form>
+
+        <div class="contact-us" style="margin-top: 20px; text-align: center;">
+            <p>For any inquiries, <a href="https://notreal001.github.io/Guild-Application/">Join our Discord Server</a>.</p>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 NotReal. All rights reserved.</p>
+        </div>
+    </div>
+    <script>
+      function submitForm() {
+          // Check if there is a cookie for the last submission
+          var lastSubmission = getCookie("lastSubmission");
+
+          if (lastSubmission) {
+              var lastSubmissionTime = new Date(lastSubmission).getTime();
+              var currentTime = new Date().getTime();
+              var hoursSinceLastSubmission = (currentTime - lastSubmissionTime) / (1000 * 60 * 60);
+
+              // Check if less than 24 hours have passed since the last submission
+              if (hoursSinceLastSubmission < 24) {
+                  alert("Hello There. You can only submit one application every 24 hours. Please wait for Guild managers to check your application or try again later.");
+                  return;
+              }
+          }
+
+          // Assuming your webhook URL is stored in a variable named 'webhookUrl'
+          var webhookUrl = 'https://discord.com/api/webhooks/1187268835854786571/rlCI41lLD6dyCXTizfVHGBvi-vEW0sWxUT8FH6D87ma1eMVYdqeGsR7Vy5T7inoFu4xV';  // Replace this with your actual Discord webhook URL
+
+          // Get form data
+          var formData = {
+              "IGN": document.getElementById('ign').value,
+              "Discord ID": document.getElementById('discordId').value,
+              "Reason to Join": document.getElementById('reason').value,
+              "Estimated Weekly Wins": document.getElementById('wins').value
+          };
+
+          // Create the message
+          var message = "New Guild Application:\n\n";
+          for (var key in formData) {
+              message += key + ": " + formData[key] + "\n";
+          }
+
+          // Create a JSON payload for the webhook
+          var payload = {
+              "content": message
+          };
+
+          // Send the data to the Discord webhook
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", webhookUrl, true);
+          xhr.setRequestHeader("Content-Type", "application/json");
+
+          xhr.onreadystatechange = function () {
+              if (xhr.readyState === 4) {
+                  if (xhr.status === 204) {
+                      // Successful submission
+                      alert("Application submitted successfully!");
+                  } else {
+                      // Error submitting application
+                      alert("Error submitting application. Please try again later.");
+                  }
+              }
+          };
+
+          xhr.send(JSON.stringify(payload));
+
+          // After handling the response, update the last submission timestamp in the cookie
+          setCookie("lastSubmission", new Date().toUTCString(), 24);
+      }
+
+        // Function to get the value of a cookie
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+
+        // Function to set a cookie
+        function setCookie(name, value, hours) {
+            var expires = "";
+            if (hours) {
+                var date = new Date();
+                date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // This event listener ensures that the code inside it runs
+            // after the HTML content is fully loaded
+
+            // Hide the form container initially
+            document.getElementById('form-container').style.display = 'none';
+
+            // After hiding the form container, show the loading screen
+            document.getElementById('loading-screen').style.display = 'block';
+
+            // Set a timeout to simulate loading time (adjust as needed)
+            setTimeout(function () {
+                showForm();
+            }, 2000); // 2000 milliseconds (2 seconds)
+        });
+
+        function showForm() {
+            // Hide the loading screen
+            document.getElementById('loading-screen').style.display = 'none';
+            // Show the form container
+            document.getElementById('form-container').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
