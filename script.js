@@ -1,3 +1,14 @@
+document.querySelectorAll('.cta-button').forEach(function(button) {
+    button.addEventListener('touchstart', function() {
+      button.classList.add('active');
+    });
+
+    // Remove touch interaction class on touch end
+    button.addEventListener('touchend', function() {
+      button.classList.remove('active');
+    });
+  });
+
 document.addEventListener('DOMContentLoaded', function () {
       setTimeout(function () {
         document.body.classList.add('loaded');
