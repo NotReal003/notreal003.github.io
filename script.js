@@ -1,19 +1,41 @@
-document.querySelectorAll('.cta-button').forEach(function(button) {
-    button.addEventListener('touchstart', function() {
-      button.classList.add('active');
-    });
+document.addEventListener('DOMContentLoaded', function () {
+  // Show the loading screen
+  document.getElementById('loading-screen').style.display = 'flex';
+});
 
-    // Remove touch interaction class on touch end
-    button.addEventListener('touchend', function() {
-      button.classList.remove('active');
-    });
+window.addEventListener('load', function () {
+  // Hide the loading screen
+  setTimeout(function() {
+    document.getElementById('loading-screen').style.display = 'none';
+  }, 1000); // 1 second
+  document.body.classList.add('loaded');
+});
+var toggleButton = document.getElementById('mode-toggle');
+toggleButton.addEventListener('click', function () {
+  document.body.classList.toggle('night-mode');
+  if (document.body.classList.contains('night-mode')) {
+    toggleButton.textContent = 'Day Mode';
+  } else {
+    toggleButton.textContent = 'Night Mode';
+  }
+  // Add animation when switching modes
+  document.body.style.animation = 'changeMode 1s';
+  setTimeout(function() {
+    document.body.style.animation = '';
+  }, 1000);
+});
+
+// Add touch interaction for CTA buttons
+document.querySelectorAll('.cta-button').forEach(function(button) {
+  button.addEventListener('touchstart', function() {
+    button.classList.add('active');
   });
+  button.addEventListener('touchend', function() {
+    button.classList.remove('active');
+  });
+});
 
 document.addEventListener('DOMContentLoaded', function () {
-      setTimeout(function () {
-        document.body.classList.add('loaded');
-      }, 2000); // time based on your preference
-    });document.addEventListener('DOMContentLoaded', function () {
     // if the user has a visit date cookie
     const lastVisit = getCookie('lastVisit');
 
