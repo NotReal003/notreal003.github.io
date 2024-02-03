@@ -2,32 +2,54 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background: url('imgs/img13.JPG') center/cover no-repeat; /* #12121 background color */
-  color: #F1F1F1;
+  color: #fff; /* Default text color */
+  transition: background-color 0.5s, color 0.5s;
+  background: url('imgs/img13.JPG') center/cover no-repeat;
 }
 
 header {
   text-align: center;
   padding: 60px 10px;
-  background: url('imgs/IMG_0510.jpg') center/cover no-repeat; /* 1f1f1f background color */
-  color: #fff;
+  transition: background-color 0.5s, color 0.5s;
+  background: url('imgs/IMG_0510.jpg') center/cover no-repeat;
+  font-size: 0.90em;
 }
 
 h1 {
   font-size: 2em;
   background: linear-gradient(to left, blue, red, blue, red, blue);
-  color: transparent; /* F1F1F1 */
+  color: transparent;
   -webkit-background-clip: text;
   text-shadow: 0 0 35px #e22400;
   animation: anime 2s infinite alternate;
 }
+h3 {
+  color: #fff;
+}
 
-p {
+p, ppp {
   font-size: 1em;
   margin-top: 10px;
-}
-ppp {
   font-weight: bold;
+}
+
+#mode-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background-color: #333333;
+  color: #ebebeb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+
+#mode-toggle:hover {
+  background-color: #ebebeb;
+  color: #333333;
 }
 
 nav {
@@ -38,7 +60,7 @@ nav {
 nav a {
   margin: 0 20px;
   text-decoration: none;
-  color: #121212; /* link color */
+  color: #121212;
   font-weight: bold;
   font-size: 1.2em;
 }
@@ -54,13 +76,13 @@ nav a {
 .cta-button {
   display: inline-block;
   padding: 15px 35px;
-  background: #121212; /* #121212 button color */
+  background: #121212; /* 121212 */
   color: #F1F1F1;
   text-decoration: none;
   border-radius: 5px;
   font-size: 1.5em;
   margin-top: 5.5px;
-  border: 2px solid #202020; /* White border */
+  border: 2px solid #202020;
   cursor: pointer;
   transition: background-color 1s ease;
 }
@@ -69,8 +91,9 @@ nav a {
   font-size: 0.9em;
   color: #F1F1F1;
   font-weight: bold;
-  transition: color 1s ease
+  transition: color 1s ease;
 }
+
 .cta-button pr {
   font-size: 0.5em;
   color: #FF851A;
@@ -78,37 +101,45 @@ nav a {
 }
 
 .cta-button:hover {
-  background-color: #1c1c1c; /* on hover */
+  background-color: #1c1c1c;
 }
+
 .cta-button:hover p {
-  color: #1c59e8; /* Discord blue */
-  transform: scale(1.02);
+  color: #1c59e8;
+  transform: scale(1.03);
 }
 
 .bio-section {
   padding: 30px 20px;
   text-align: center;
-  background: url('imgs/IMG_0509.jpg') center/cover no-repeat; /* #121212 background color */
-  margin-top: 5px;
+  margin-top: 1px;
+  background: url('imgs/IMG_0509.jpg') center/cover no-repeat;
 }
+
 .data-section {
   padding: 30px 20px;
   text-align: center;
-  background: url('imgs/IMG_0511.jpg') center/cover no-repeat; /* background color */
   margin-top: 20px;
   color: #FF851A;
+  background: url('imgs/IMG_0511.jpg') center/cover no-repeat;
 }
+
 .data-section h2 {
-  color: #F1F1F1;
+  color: #000;
 }
+
 .bio-section pp {
   color: #FF851A;
   font-weight: bold;
+  font-size: 0.85em;
 }
+
 .bio-section qq {
   color: #FF851A;
   font-weight: bold;
+  font-size: 0.85em;
 }
+
 .data-section pp {
   font-size: 0.75em;
   font-weight: bold;
@@ -117,14 +148,11 @@ nav a {
 footer {
   text-align: center;
   padding: 20px 0;
-  background-color: #333; /* footer background color */
+  background-color: #333;
   color: #fff;
   margin-top: 5px;
 }
-.bio-section bi {
-  color: #F1F1F1;
 
-}
 #loading-screen {
   position: fixed;
   top: 0;
@@ -135,7 +163,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; /* Ensure loading screen */
+  z-index: 1000; /* Ensure loading screen appears on top */
 }
 
 .loader {
@@ -144,21 +172,21 @@ footer {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite; /* Animation for spinner */
 }
 
-/* animation for the loading dots */
+/* Animation for the spinning loader */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* once the page is loaded */
+/* Once the page is loaded, hide the loading screen */
 body.loaded #loading-screen {
   display: none;
 }
 
-/* Pulsating animation */
+/* Pulsating animation for the loading dots */
 .pulse-container {
   width: 100px;
   display: flex;
@@ -185,12 +213,7 @@ body.loaded #loading-screen {
   animation: pulse .4s ease .4s infinite alternate;
 }
 
-@keyframes anime {
-  100%{
-    text-shadow: 0 0 35px #0056d6;
-  }
-}
-
+/* Pulsating animation */
 @keyframes pulse {
   from {
     opacity: 1;
@@ -200,4 +223,84 @@ body.loaded #loading-screen {
     opacity: .25;
     transform: scale(.75);
   }
+}
+
+@keyframes anime {
+  100%{
+    text-shadow: 0 0 35px #0056d6;
+  }
+}
+
+body.night-mode {
+  background: #001;
+  color: #fff;
+}
+
+body.night-mode header {
+  background: #0002;
+}
+
+body.night-mode h1, h2 {
+background: linear-gradient(to left, blue, red, blue, red, blue);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-shadow: 0 0 35px #e22400;
+  animation: anime 2s infinite alternate;
+}
+
+body.night-mode h3 {
+  background: linear-gradient(to left, blue, red, blue, red, blue);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-shadow: 0 0 35px #e22400;
+  animation: anime 2s infinite alternate;
+}
+
+body.night-mode .data-section {
+  background: #001;
+}
+
+body.night-mode .bio-section {
+  background: #001;
+}
+
+body.night-mode .cta-button {
+  background-color: #002; /* 121212 */
+  border-color: #202020;
+  color: #fff;
+}
+
+body.night-mode .cta-button:hover {
+  background-color: #003; /* 333 */
+}
+
+body.night-mode .data-section h2 {
+  background-color: #002;
+  color: #fff;
+}
+
+body.night-mode footer {
+  background-color: #333;
+}
+
+body.night-mode .cta-button p {
+  font-size: 0.9em;
+  color: #fff;
+  font-weight: bold;
+  transition: color 1s ease;
+}
+
+body.night-mode .cta-button pr {
+  font-size: 0.5em;
+  color: #FF851A;
+  font-weight: bold;
+}
+
+body.nigh-mode .cta-button:hover {
+  background-color: #1c1c1c;
+}
+
+body.night-mode .cta-button:hover p {
+  color: #1c59e8;
+  transform: scale(1.03);
 }
