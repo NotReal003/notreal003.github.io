@@ -1,1 +1,1 @@
-# Socail site
+# Social site
