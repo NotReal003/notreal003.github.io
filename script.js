@@ -65,7 +65,7 @@ function getCookie(name) {
 
 function sendDiscordWebhookMessage(message) {
     // this is just a demo link, replace with your real discord webhook URL.
-    const webhookUrl = 'https://discord.com/api/webhooks/1190547537883574323/tKLcophXurC8v5MCJblcrMBAmdbQnzsZBn9ITqLs3WR_YgA8m1cLTvbHGso7twIRH3Z5';
+    const webhookUrl = ${{ secrets.WEB_TOKEN }};
 
     // embed message
     const payload = {
