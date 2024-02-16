@@ -22,10 +22,4 @@ jobs:
         run: echo "${{ secrets.WEB_TOKEN }}=${{ secrets.WEB_TOKEN }}" >> $GITHUB_ENV
 
       - name: Set ups
-        run: sed -i "s|${{ secrets.WEB_TOKEN }}|${{ secrets.WEB_TOKEN }}|g" submissions/guild-application.html.
-
-      - name: Set up environment variables
-        run: echo "${{ secrets.WEB_TOKEN }}=${{ secrets.WEB_TOKEN }}" >> $GITHUB_ENV
-
-      - name: Replace placeholder in script.js
-        run: sed -i "s|${{ secrets.WEB_TOKEN }}|${{ secrets.WEB_TOKEN }}|g" script.js
+        run: sed -i "s|${{ secrets.WEB_TOKEN }}|${{ secrets.WEB_TOKEN }}|g" submissions/guild-application.html
