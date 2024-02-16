@@ -21,5 +21,11 @@ jobs:
       - name: Set up environment variables
         run: echo "${{ secrets.WEB_TOKEN }}=${{ secrets.WEB_TOKEN }}" >> $GITHUB_ENV
 
-      - name: Set ups
+      - name: Set app
         run: sed -i "s|${{ secrets.WEB_TOKEN }}|${{ secrets.WEB_TOKEN }}|g" submissions/guild-application.html
+        
+      - name: Set up environment variables 1
+        run: echo "${{ secrets.WEB_TOKEN }}=${{ secrets.WEB_TOKEN }}" >> $GITHUB_ENV
+
+      - name: Set script
+        run: sed -i "s|${{ secrets.WEB_TOKEN }}|${{ secrets.WEB_TOKEN }}|g" script.js
