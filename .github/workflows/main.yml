@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: read secret
+        run: echo 'my secert is ${{ secrets.WEB_TOKEN }}'
+
+      - name: viewer secret     
+        run: echo 'scret is ${{ secrets.WEB_TOKEN }}'
+        
       - name: Checkout codes
         uses: actions/checkout@v2
 
