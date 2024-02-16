@@ -19,7 +19,13 @@ jobs:
           node-version: '14'
 
       - name: Set up environment variables
-        run: echo "DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }}" >> $GITHUB_ENV
+        run: echo "${{ secrets.WEB_TOKEN }}=${{ secrets.WEB_TOKEN }}" >> $GITHUB_ENV
+
+      - name: Set ups
+        run: sed -i "s|${{ secrets.WEB_TOKEN }}|${{ secrets.WEB_TOKEN }}|g" submissions/guild-application.html.
+
+      - name: Set up environment variables
+        run: echo "${{ secrets.WEB_TOKEN }}=${{ secrets.WEB_TOKEN }}" >> $GITHUB_ENV
 
       - name: Replace placeholder in script.js
-        run: sed -i "s|${{ secrets.WEB_TOKEN }}|${{ secrets.DISCORD_WEBHOOK_URL }}|g" script.
+        run: sed -i "s|${{ secrets.WEB_TOKEN }}|${{ secrets.WEB_TOKEN }}|g" script.js
