@@ -10,13 +10,6 @@
   <meta property="og:url" content="https://notreal003.github.io/">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
- <script>
-  // Redirect users from subpaths to main website
-  if (window.location.pathname !== "/") {
-    window.location.href = "https://notreal003.github.io";
-  }
-</script>
-
 </head>
 <body>
 
@@ -56,5 +49,12 @@
   <footer>
     <p>&copy; 2024 NotReal. All Rights Reserved.</p>
   </footer>
+
+  <script>
+    // Redirect users from subpaths to main website
+    if (window.location.pathname !== "/") {
+      window.location.href = "https://notreal003.github.io/";
+    }
+  </script>
 </body>
 </html>
