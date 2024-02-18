@@ -1,6 +1,10 @@
-body {
+/* Reset CSS */
+body, h1, h2, h3, p, ul, li {
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: 'Arial', sans-serif;
   color: #fff; /* Default text color */
   transition: background-color 0.5s, color 0.5s;
@@ -15,20 +19,24 @@ header {
   font-size: 0.90em;
 }
 
-h1 {
+h1, h2, h3 {
   font-size: 2em;
-  background: linear-gradient(to left, blue, red, blue, red, blue);
   color: transparent;
   -webkit-background-clip: text;
   text-shadow: 0 0 35px #e22400;
   animation: anime 2s infinite alternate;
 }
+
+h1 {
+  background: linear-gradient(to left, blue, red, blue, red, blue);
+}
+
 h3 {
   color: #fff;
 }
 
 gpp {
-  color: #FF851A;;
+  color: #FF851A;
 }
 
 p, ppp {
@@ -71,9 +79,6 @@ nav a {
 
 .cta-section {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 15px;
 }
 
@@ -132,20 +137,8 @@ nav a {
   color: #000;
 }
 
-.bio-section pp {
+.bio-section pp, .bio-section qq, .data-section pp {
   color: #FF851A;
-  font-weight: bold;
-  font-size: 0.85em;
-}
-
-.bio-section qq {
-  color: #FF851A;
-  font-weight: bold;
-  font-size: 0.85em;
-}
-
-.data-section pp {
-  font-size: 0.75em;
   font-weight: bold;
 }
 
@@ -244,15 +237,7 @@ body.night-mode header {
   background: #0002;
 }
 
-body.night-mode h1, h2 {
-background: linear-gradient(to left, blue, red, blue, red, blue);
-  color: transparent;
-  -webkit-background-clip: text;
-  text-shadow: 0 0 35px #e22400;
-  animation: anime 2s infinite alternate;
-}
-
-body.night-mode h3 {
+body.night-mode h1, body.night-mode h2, body.night-mode h3 {
   background: linear-gradient(to left, blue, red, blue, red, blue);
   color: transparent;
   -webkit-background-clip: text;
@@ -260,11 +245,7 @@ body.night-mode h3 {
   animation: anime 2s infinite alternate;
 }
 
-body.night-mode .data-section {
-  background: #001;
-}
-
-body.night-mode .bio-section {
+body.night-mode .data-section, body.night-mode .bio-section {
   background: #001;
 }
 
@@ -276,11 +257,6 @@ body.night-mode .cta-button {
 
 body.night-mode .cta-button:hover {
   background-color: #003; /* 333 */
-}
-
-body.night-mode .data-section h2 {
-  background-color: #002;
-  color: #fff;
 }
 
 body.night-mode footer {
@@ -300,7 +276,7 @@ body.night-mode .cta-button pr {
   font-weight: bold;
 }
 
-body.nigh-mode .cta-button:hover {
+body.night-mode .cta-button:hover {
   background-color: #1c1c1c;
 }
 
