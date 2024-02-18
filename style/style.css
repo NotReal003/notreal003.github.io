@@ -11,7 +11,7 @@ header {
   text-align: center;
   padding: 60px 10px;
   transition: background-color 0.5s, color 0.5s;
-  background: url('imgs/IMG_0510.jpg') center/cover no-repeat;
+  background: url('style/imgs/IMG_0510.jpg') center/cover no-repeat;
   font-size: 0.90em;
 }
 
