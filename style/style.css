@@ -80,7 +80,7 @@ nav a {
 .cta-button {
   display: inline-block;
   padding: 15px 35px;
-  background: rgba(18, 18, 18, 0.59); /* 121212 */
+  background: rgba(18, 18, 18, 0.55); /* 121212 */
   color: #F1F1F1;
   text-decoration: none;
   border-radius: 5px;
@@ -105,7 +105,7 @@ nav a {
 }
 
 .cta-button:hover {
-  background-color: #1c1c1c;
+  background-color: rgba(28, 28, 28, 0.55);
 }
 
 .cta-button:hover p {
