@@ -4,7 +4,7 @@ body {
   font-family: 'Arial', sans-serif;
   color: #fff; /* Default text color */
   transition: background-color 0.5s, color 0.5s;
-  background: url('imgs/img13.JPG') center/cover no-repeat;
+  background: url('style/imgs/img13.JPG') center/cover no-repeat;
 }
 
 header {
@@ -117,7 +117,7 @@ nav a {
   padding: 30px 20px;
   text-align: center;
   margin-top: 1px;
-  background: url('imgs/IMG_0509.jpg') center/cover no-repeat;
+  background: url('style/imgs/IMG_0509.jpg') center/cover no-repeat;
 }
 
 .data-section {
@@ -125,7 +125,7 @@ nav a {
   text-align: center;
   margin-top: 20px;
   color: #FF851A;
-  background: url('imgs/IMG_0511.jpg') center/cover no-repeat;
+  background: url('style/imgs/IMG_0511.jpg') center/cover no-repeat;
 }
 
 .data-section h2 {
