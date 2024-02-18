@@ -80,7 +80,7 @@ nav a {
 .cta-button {
   display: inline-block;
   padding: 15px 35px;
-  background: #121212; /* 121212 */
+  background: rgba(18, 18, 18, 0.59); /* 121212 */
   color: #F1F1F1;
   text-decoration: none;
   border-radius: 5px;
