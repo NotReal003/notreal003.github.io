@@ -4,7 +4,7 @@ body {
   font-family: 'Arial', sans-serif;
   color: #fff; /* Default text color */
   transition: background-color 0.5s, color 0.5s;
-  background: url('style/imgs/img13.JPG') center/cover no-repeat;
+  background: url('imgs/img13.JPG') center/cover no-repeat;
 }
 
 header {
