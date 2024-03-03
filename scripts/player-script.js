@@ -22,7 +22,7 @@ async function searchPlayer() {
         const response = await fetch(`https://api.ngmc.co/v1/players/${playerName}`);
 
         if (!response.ok) {
-            throw new Error(`Failed to fetch player information. Status: ${response.status}`);
+            throw new Error(`Failed to find player information. Status: ${response.status}`);
         }
 
         const playerData = await response.json();
