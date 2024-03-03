@@ -52,7 +52,7 @@ async function searchPlayer() {
             <p><strong>Losses:</strong> ${playerData.losses || 0}</p>
             <p><strong>Kills:</strong> ${playerData.kills || 0}</p>
             <p><strong>Deaths:</strong> ${playerData.deaths || 0}</p>
-            <p><strong>Online Time:</strong> ${playerData.extra?.online?.time || 0} minutes</p>
+            <p><strong>Online Time:</strong> ${playerData.extra && playerData.extra.online && playerData.extra.online.time ? playerData.extra.online.time + ' minutes' : 'N/A'}</p>
             <p><strong>XP:</strong> ${playerData.xp || 0}</p>
         `;
 
