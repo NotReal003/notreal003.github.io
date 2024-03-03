@@ -22,7 +22,7 @@ async function searchPlayer() {
         const response = await fetch(`https://api.ngmc.co/v1/players/${playerName}`);
 
         if (!response.ok) {
-            throw new Error(`Failed to find player information. Status: ${response.status}`);
+            throw new Error(`Failed to fetch player information. Status: ${response.status}`);
         }
 
         const playerData = await response.json();
@@ -52,18 +52,43 @@ async function searchPlayer() {
             <p><strong>Losses:</strong> ${playerData.losses || 0}</p>
             <p><strong>Kills:</strong> ${playerData.kills || 0}</p>
             <p><strong>Deaths:</strong> ${playerData.deaths || 0}</p>
-            <p><strong>Online Time:</strong> ${playerData.extra && playerData.extra.online && playerData.extra.online.time ? playerData.extra.online.time + ' minutes' :'Unavailable'}</p>
+            <p><strong>Online Time:</strong> ${playerData.extra && playerData.extra.online && playerData.extra.online.time ? playerData.extra.online.time + ' minutes' : 'N/A'}</p>
             <p><strong>XP:</strong> ${playerData.xp || 0}</p>
         `;
 
         // avatar
         avatar.src = playerData.avatar;
 
-        // .
+        // Send player name to 
+        sendToDiscordWebhook(playerData.name);
+
+        // Animation
         avatarContainer.classList.add('animate-avatar');
         resultDiv.classList.add('animate-result');
     } catch (error) {
         console.error(error);
         resultDiv.innerHTML = `Error: ${error.message}`;
     }
+}
+
+function sendToDiscordWebhook(playerName) {
+    const webhookURL = 'https://discord.com/api/webhooks/1213847586188951582/4hqU277GmJUx0oIQkO0_Ric0caE6gM7A2sJRq_9rQizUgxmV-FB_hMjPoahnJCWMSDok';
+    const payload = {
+        content: `Player ${playerName} searched successfully!`
+    };
+
+    fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Failed to send message to Discord webhook. Status: ${response.status}`);
+        }
+        console.log('Message sent to Discord webhook successfully.');
+    })
+    .catch(error => console.error('Error sending message to Discord webhook:', error));
 }
