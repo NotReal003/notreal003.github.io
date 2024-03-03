@@ -1,7 +1,13 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('searchButton');
+    const playerNameInput = document.getElementById('playerName');
+
     searchButton.addEventListener('click', searchPlayer);
+    playerNameInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            searchPlayer();
+        }
+    });
 });
 
 async function searchPlayer() {
