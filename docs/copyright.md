@@ -1,5 +1,14 @@
 # Copyright Notice
+This article is about the copyright notice/statement!
 
+Quick access!
+- [Copyright Statement](https://notreal003.github.io/docs/copyright.html#copyright-statement)
+- [Usage Rights](https://notreal003.github.io/docs/copyright.html#usage-rights)
+- [Attribution](https://notreal003.github.io/docs/copyright.html#attribution)
+- [Contact Information](https://notreal003.github.io/docs/copyright.html#contact-information).
+
+---
+  
 ## Copyright Statement
 All content on this website, including text, graphics, and code, is the property of NotReal003 unless otherwise noted. It is protected by international copyright laws.
 
