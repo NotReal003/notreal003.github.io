@@ -22,7 +22,8 @@ jobs:
           sed -i 's|__DISCORD_WEBHOOK_URL__|${{ secrets.DISCORD_WEBHOOK_URL }}|g' ./scripts/main-script.js
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        id: deployment
+        uses: actions/deploy-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./  # Adjust this if your build output goes to a different directory
+          publish_dir: .  # Adjust this if your build output goes to a different directory
