@@ -21,13 +21,6 @@ jobs:
         run: |
           sed -i 's|__DISCORD_WEBHOOK_URL__|${{ secrets.DISCORD_WEBHOOK_URL }}|g' ./scripts/main-script.js
 
-      - name: Build and Deploy
-        run: |
-          # Your build commands here
-          echo "Building the project"
-          # For example, if you're using npm
-          npm install
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
