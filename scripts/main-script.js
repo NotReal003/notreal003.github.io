@@ -37,7 +37,7 @@ document.querySelectorAll('.cta-button').forEach(function(button) {
 
 function sendDiscordWebhookMessage(message) {
     // This is just a demo link, replace with your real discord webhook URL.
-    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    const webhookUrl = '__DISCORD_WEBHOOK_URL__';
 
     // Embed message
     const payload = {
