@@ -19,7 +19,7 @@ jobs:
 
       - name: Replace webhook URL in script.js
         run: |
-          sed -i 's|__DISCORD_WEBHOOK_URL__|${{ secrets.DISCORD_WEBHOOK_URL }}|g' ./path/to/your/script.js
+          sed -i 's|__DISCORD_WEBHOOK_URL__|${{ secrets.DISCORD_WEBHOOK_URL }}|g' ./scripts/main-script.js
 
       - name: Build and Deploy
         run: |
