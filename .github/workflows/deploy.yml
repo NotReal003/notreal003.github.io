@@ -1,12 +1,16 @@
-name: Deploy and Notify
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Adjust this if you use a different branch
+
+permissions:
+  id-token: write  # Grant the necessary permission for OIDC
+  contents: read  # Ensure the GITHUB_TOKEN can read repository contents
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,21 +19,18 @@ jobs:
 
       - name: Replace webhook URL in script.js
         run: |
-          sed -i 's|process.env.DISCORD_WEBHOOK_URL|${{ secrets.DISCORD_WEBHOOK_URL }}|g' scripts/main-script.js
+          sed -i 's|__DISCORD_WEBHOOK_URL__|${{ secrets.DISCORD_WEBHOOK_URL }}|g' ./path/to/your/script.js
 
       - name: Build and Deploy
         run: |
           # Your build commands here
-          echo "Building and deploying the project"
+          echo "Building the project"
+          # For example, if you're using npm
+          npm install
+          npm run build
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
