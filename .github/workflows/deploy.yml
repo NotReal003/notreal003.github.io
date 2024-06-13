@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy and Notify
 
 on:
   push:
@@ -6,29 +6,24 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build project
+      - name: Replace webhook URL in script.js
+        run: |
+          sed -i 's|process.env.DISCORD_WEBHOOK_URL|${{ secrets.DISCORD_WEBHOOK_URL }}|g' path/to/your/script.js
+
+      - name: Build and Deploy
         run: |
           # Your build commands here
-          npm install
-          npm run build
+          echo "Building and deploying the project"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-
-      - name: Use Discord Webhook
-        env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: |
-          curl -H "Content-Type: application/json" \
-               -d '{"content":"Deployment completed!"}' \
-               $DISCORD_WEBHOOK_URL
