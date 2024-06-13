@@ -10,20 +10,41 @@ permissions:
   contents: read  # Ensure the GITHUB_TOKEN can read repository contents
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Replace webhook URL in script.js
+      - name: Replace webhook URL in main-script.js
         run: |
           sed -i 's|__DISCORD_WEBHOOK_URL__|${{ secrets.DISCORD_WEBHOOK_URL }}|g' ./scripts/main-script.js
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v2
+
+      - name: Commit changes
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add .
+          git commit -m "Replace webhook URL in main-script.js"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .  # Adjust this if your build output goes to a different directory
+          token: ${{ secrets.GITHUB_TOKEN }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
