@@ -27,7 +27,6 @@ jobs:
           echo "Building the project"
           # For example, if you're using npm
           npm install
-          npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
