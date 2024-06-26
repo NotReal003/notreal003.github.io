@@ -30,7 +30,7 @@ jobs:
 
       - name: Replace webhook URL in main-script.js
         run: |
-          sed -i 's|__DISCORD_WEBHOOK_URL__|${{ secrets.DISCORD_WEBHOOK_URL }}|g' ./scripts/main-script.js
+          sed -i 's|__DISCORD_WEBHOOK_URL__|${{ secrets.DISCORD2_WEBHOOK_URL }}|g' ./submissions/guild-application.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
