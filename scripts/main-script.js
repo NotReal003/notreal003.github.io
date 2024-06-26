@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
   // Hide the loading screen
   setTimeout(function() {
     document.getElementById('loading-screen').style.display = 'none';
-  }, 3000); // 1 second
+  }, 1000); // 1 second
   document.body.classList.add('loaded');
 });
 var toggleButton = document.getElementById('mode-toggle');
