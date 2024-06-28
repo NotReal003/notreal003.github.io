@@ -157,6 +157,11 @@ footer {
   margin-top: 5px;
 }
 
+footer a {
+  color: #FF851A;
+  text-decoration: none;
+}
+
 #loading-screen {
   position: fixed;
   top: 0;
