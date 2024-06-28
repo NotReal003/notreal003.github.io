@@ -1,8 +1,17 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
   color: #fff; /* Default text color */
+  -webkit-transition: background-color 0.5s, color 0.5s;
+  -o-transition: background-color 0.5s, color 0.5s;
   transition: background-color 0.5s, color 0.5s;
   background: url('/imgs/img14.jpeg') center/cover no-repeat;
 }
@@ -10,6 +19,8 @@ body {
 header {
   text-align: center;
   padding: 60px 10px;
+  -webkit-transition: background-color 0.5s, color 0.5s;
+  -o-transition: background-color 0.5s, color 0.5s;
   transition: background-color 0.5s, color 0.5s;
   background: url('/imgs/IMG_0510.jpg') center/cover no-repeat;
   font-size: 0.90em;
@@ -17,11 +28,14 @@ header {
 
 h1 {
   font-size: 2em;
+  background: -webkit-gradient(linear, right top, left top, from(blue), color-stop(red), color-stop(blue), color-stop(red), to(blue));
+  background: -o-linear-gradient(right, blue, red, blue, red, blue);
   background: linear-gradient(to left, blue, red, blue, red, blue);
   color: transparent;
   -webkit-background-clip: text;
   text-shadow: 0 0 35px #e22400;
-  animation: anime 2s infinite alternate;
+  -webkit-animation: anime 2s infinite alternate;
+          animation: anime 2s infinite alternate;
 }
 h3 {
   color: #fff;
@@ -48,6 +62,8 @@ p, ppp {
   border-radius: 5px;
   cursor: pointer;
   z-index: 1000;
+  -webkit-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
 
@@ -71,9 +87,16 @@ nav a {
 
 .cta-section {
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 15px;
 }
 
@@ -88,6 +111,8 @@ nav a {
   margin-top: 5.5px;
   border: 2px solid #202020;
   cursor: pointer;
+  -webkit-transition: background-color 1s ease;
+  -o-transition: background-color 1s ease;
   transition: background-color 1s ease;
 }
 
@@ -95,6 +120,8 @@ nav a {
   font-size: 0.9em;
   color: #F1F1F1;
   font-weight: bold;
+  -webkit-transition: color 1s ease;
+  -o-transition: color 1s ease;
   transition: color 1s ease;
 }
 
@@ -110,7 +137,9 @@ nav a {
 
 .cta-button:hover p {
   color: #1c59e8;
-  transform: scale(1.03);
+  -webkit-transform: scale(1.03);
+      -ms-transform: scale(1.03);
+          transform: scale(1.03);
 }
 
 .bio-section {
@@ -170,9 +199,15 @@ footer oo {
   width: 100%;
   height: 100%;
   background: #333; /* Loading screen background color */
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   z-index: 1000; /* Ensure loading screen appears on top */
 }
 
@@ -182,13 +217,18 @@ footer oo {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  animation: spin 2s linear infinite; /* Animation for spinner */
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite; /* Animation for spinner */
 }
 
 /* Animation for the spinning loader */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
 }
 
 /* Once the page is loaded, hide the loading screen */
@@ -199,9 +239,15 @@ body.loaded #loading-screen {
 /* Pulsating animation for the loading dots */
 .pulse-container {
   width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .pulse-bubble {
@@ -212,26 +258,49 @@ body.loaded #loading-screen {
 }
 
 .pulse-bubble-1 {
-  animation: pulse .4s ease 0s infinite alternate;
+  -webkit-animation: pulse .4s ease 0s infinite alternate;
+          animation: pulse .4s ease 0s infinite alternate;
 }
 
 .pulse-bubble-2 {
-  animation: pulse .4s ease .2s infinite alternate;
+  -webkit-animation: pulse .4s ease .2s infinite alternate;
+          animation: pulse .4s ease .2s infinite alternate;
 }
 
 .pulse-bubble-3 {
-  animation: pulse .4s ease .4s infinite alternate;
+  -webkit-animation: pulse .4s ease .4s infinite alternate;
+          animation: pulse .4s ease .4s infinite alternate;
 }
 
 /* Pulsating animation */
-@keyframes pulse {
+@-webkit-keyframes pulse {
   from {
     opacity: 1;
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
   to {
     opacity: .25;
-    transform: scale(.75);
+    -webkit-transform: scale(.75);
+            transform: scale(.75);
+  }
+}
+@keyframes pulse {
+  from {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    opacity: .25;
+    -webkit-transform: scale(.75);
+            transform: scale(.75);
+  }
+}
+
+@-webkit-keyframes anime {
+  100%{
+    text-shadow: 0 0 35px #0056d6;
   }
 }
 
@@ -251,19 +320,25 @@ body.night-mode header {
 }
 
 body.night-mode h1, h2 {
+background: -webkit-gradient(linear, right top, left top, from(blue), color-stop(red), color-stop(blue), color-stop(red), to(blue));
+background: -o-linear-gradient(right, blue, red, blue, red, blue);
 background: linear-gradient(to left, blue, red, blue, red, blue);
   color: transparent;
   -webkit-background-clip: text;
   text-shadow: 0 0 35px #e22400;
-  animation: anime 2s infinite alternate;
+  -webkit-animation: anime 2s infinite alternate;
+          animation: anime 2s infinite alternate;
 }
 
 body.night-mode h3 {
+  background: -webkit-gradient(linear, right top, left top, from(blue), color-stop(red), color-stop(blue), color-stop(red), to(blue));
+  background: -o-linear-gradient(right, blue, red, blue, red, blue);
   background: linear-gradient(to left, blue, red, blue, red, blue);
   color: transparent;
   -webkit-background-clip: text;
   text-shadow: 0 0 35px #e22400;
-  animation: anime 2s infinite alternate;
+  -webkit-animation: anime 2s infinite alternate;
+          animation: anime 2s infinite alternate;
 }
 
 body.night-mode .data-section {
@@ -297,6 +372,8 @@ body.night-mode .cta-button p {
   font-size: 0.9em;
   color: #fff;
   font-weight: bold;
+  -webkit-transition: color 1s ease;
+  -o-transition: color 1s ease;
   transition: color 1s ease;
 }
 
@@ -312,5 +389,7 @@ body.nigh-mode .cta-button:hover {
 
 body.night-mode .cta-button:hover p {
   color: #1c59e8;
-  transform: scale(1.03);
+  -webkit-transform: scale(1.03);
+      -ms-transform: scale(1.03);
+          transform: scale(1.03);
 }
