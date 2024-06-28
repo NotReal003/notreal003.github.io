@@ -11,7 +11,7 @@ header {
   text-align: center;
   padding: 60px 10px;
   transition: background-color 0.5s, color 0.5s;
-  background: url('../imgs/IMG_0510.jpg') center/cover no-repeat;
+  background: url('/imgs/IMG_0510.jpg') center/cover no-repeat;
   font-size: 0.90em;
 }
 
@@ -117,7 +117,7 @@ nav a {
   padding: 30px 20px;
   text-align: center;
   margin-top: 1px;
-  background: url('../imgs/IMG_0509.jpg') center/cover no-repeat;
+  background: url('/imgs/IMG_0509.jpg') center/cover no-repeat;
 }
 
 .data-section {
@@ -125,7 +125,7 @@ nav a {
   text-align: center;
   margin-top: 20px;
   color: #FF851A;
-  background: url('../imgs/IMG_0511.jpg') center/cover no-repeat;
+  background: url('/imgs/IMG_0511.jpg') center/cover no-repeat;
 }
 
 .data-section h2 {
