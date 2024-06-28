@@ -4,7 +4,7 @@ body {
   font-family: 'Arial', sans-serif;
   color: #fff; /* Default text color */
   transition: background-color 0.5s, color 0.5s;
-  background: url('imgs/img14.jpeg') center/cover no-repeat;
+  background: url('https://github.com/NotReal003/notreal003.github.io/imgs/img14.jpeg') center/cover no-repeat;
 }
 
 header {
